@@ -1,0 +1,6 @@
+mysql:
+  url: rm-bp154uk2191nt6a8luo.mysql.rds.aliyuncs.com
+  port: 3306
+  user: sgroot
+  password: b4EJkNDJbHPmHrS5
+  name: mohuan
