@@ -34,10 +34,10 @@ type DataInfo struct {
 
 func StartPush() {
 
-	day := "2023-02-14 00:00:00"
-	var ip = "cTEfZKKC23ehnIwX"
-	// var ip ="172.17.64.7"
-	var exchangeRate = 7.0635
+	day := "2023-04-24 00:00:00"
+	// var ip = "cTEfZKKC23ehnIwX"
+	var ip = "172.17.64.7"
+	var exchangeRate = 1.00
 
 	now := time.Now().Unix()
 	fmt.Println("now是时间戳", now)
@@ -137,14 +137,13 @@ func PushDbData(cur *sql.DB, week string, date string, startT1 string, endT1 str
 
 func DbCur() *sql.DB {
 	// 寻仙港澳台
-	dsn := "ef946573-9609-40aa-a306-ac25d24a948c:Q952BJ9EEG1XsJWb@tcp(login.yuanhui.work:30004)/mohuan"
+	// dsn := "ef946573-9609-40aa-a306-ac25d24a948c:Q952BJ9EEG1XsJWb@tcp(login.yuanhui.work:30004)/mohuan"
 
 	// 异兽国服
 	// dsn := "23bf980d-7153-4e1f-9061-a2137861aac7:Swq0cJ7hwluBvReg@tcp(login.yuanhui.work:30006)/gms_ys_200103"
 
 	// 寻仙国服
-	// dsn := "gms:7FTFGbNPbY@tcp(sh-cdb-j14oh158.sql.tencentcdb.com:58409)/mohuan"
-
+	dsn := "gms:7FTFGbNPbY@tcp(sh-cdb-j14oh158.sql.tencentcdb.com:58409)/mohuan"
 
 	Db, err := sql.Open("mysql", dsn) //Open函数第一个参数就是驱动的名字（不能随意写的）
 	if err != nil {                   //有一个坑，如果连接数据库配置写错了，不会在此处报错

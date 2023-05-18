@@ -13,6 +13,8 @@ func init() {
 	// 初始化redis
 	RedisCache = redis.NewClient(&redis.Options{
 		Addr: "127.0.0.1:6379",
+		Password: "",
+		DB: 4,
 	})
 
 	_, err := RedisCache.Ping().Result()
