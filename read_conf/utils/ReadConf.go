@@ -25,7 +25,7 @@ type Redis struct {
 
 func ReadConf() {
 	// // 使用 gopkg.in/yaml.v3 读取配置文件
-	dataBytes, err := os.ReadFile("read_conf/utils/test.yaml")
+	dataBytes, err := os.ReadFile("read_conf/conf/conf.yaml")
 	if err != nil {
 		fmt.Println("读取文件失败：", err)
 		return
@@ -52,11 +52,11 @@ func ReadConf() {
 func ViperConf() {
 	// 使用 github.com/spf13/viper  读取配置文件
 	// 设置配置文件的名字
-	viper.SetConfigName("test")
+	viper.SetConfigName("conf")
 	// 设置配置文件的类型
 	viper.SetConfigType("yaml")
 	// 添加配置文件的路径，指定 config 目录下寻找
-	viper.AddConfigPath("./read_conf/utils")
+	viper.AddConfigPath("./read_conf/conf")
 	// 寻找配置文件并读取
 	err := viper.ReadInConfig()
 	if err != nil {
