@@ -21,5 +21,6 @@ func main() {
 	utils.Demo6()
 	fmt.Println("-----------------------------")
 	utils.AreaCircle()
+	utils.Demo7()
 
 }

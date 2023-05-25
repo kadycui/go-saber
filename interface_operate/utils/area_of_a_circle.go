@@ -28,22 +28,16 @@ func AreaCircle() {
 	// 	67.78, 3.14,
 	// }
 
-
-
-
 	// 实例化结构体3-赋值初始化
 	// a := area{
 	// 	r:  67.78,
 	// 	pi: 3.14,
 	// }
-	
+
 	// 必须对应结构体定义顺序
 	a := area{
 		67.78, 3.14,
 	}
-
-	
-
 
 	var mj = a.circle()
 	fmt.Println(mj)
@@ -51,7 +45,7 @@ func AreaCircle() {
 }
 
 /*
-var 声明结构体: 
+var 声明结构体:
 	var a area
 	为a分配内存, 并0值化
 
@@ -70,3 +64,29 @@ new 关键字声明结构体:
 	new返回一个指向area的指针, 初始值为67.78, 3.14
 
 */
+
+type Person struct {
+	Name string
+	Age  int
+}
+
+func (p Person) ChangeName(name string) {
+	p.Name = name   // 编译器会报错：ineffective assignment to field Person.Name
+}
+
+func (p *Person) ChangeAge(age int) {
+	p.Age = age
+}
+
+func Demo7() {
+	person1 := Person{Name: "Tom", Age: 25}
+	person2 := person1
+
+	person1.ChangeName("Jerry")
+	fmt.Println(person1.Name) // 输出 "Tom"
+	fmt.Println(person2.Name) // 输出 "Tom"
+
+	person1.ChangeAge(30)
+	fmt.Println(person1.Age) // 输出 30
+	fmt.Println(person2.Age) // 输出 25
+}
