@@ -23,14 +23,24 @@ func MysqlToRedis() {
 	if err != nil {
 		panic(err)
 	}
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err := db.Close()
+		if err != nil {
+			panic(err)
+		}
+	}(db)
 
 	// 查询需要的数据
 	rows, err := db.Query("SELECT f2, f3, f4, cast(f6 as UNSIGNED)  as f6_num FROM log_battle_rank GROUP BY f2 order by f6_num  desc  limit 100;")
 	if err != nil {
 		panic(err)
 	}
-	defer rows.Close()
+	defer func(rows *sql.Rows) {
+		err := rows.Close()
+		if err != nil {
+			panic(err)
+		}
+	}(rows)
 
 	// 连接 Redis
 	rdb := redis.NewClient(&redis.Options{
@@ -38,7 +48,12 @@ func MysqlToRedis() {
 		Password: "123456", // Redis 无密码
 		DB:       3,        // 数据库编号
 	})
-	defer rdb.Close()
+	defer func(rdb *redis.Client) {
+		err := rdb.Close()
+		if err != nil {
+			panic(err)
+		}
+	}(rdb)
 
 	// 存储数据到 Redis
 	for rows.Next() {
@@ -59,9 +74,9 @@ func MysqlToRedis() {
 		}
 
 		// 将用户编码为JSON格式
-		player_info, err := json.Marshal(p)
+		playerInfo, err := json.Marshal(p)
 		if err == nil {
-			fmt.Println(string(player_info))
+			fmt.Println(string(playerInfo))
 		} else {
 			fmt.Println(err)
 			return
@@ -70,7 +85,7 @@ func MysqlToRedis() {
 		// 将JSON格式的数据存储到Redis
 		// err = rdb.Set(fmt.Sprintf("p:%d", f2), player_info, 0).Err()
 
-		err = rdb.HSet(fmt.Sprintf("p:%d", f2), fmt.Sprint(f2), string(player_info)).Err()
+		err = rdb.HSet(fmt.Sprintf("p:%d", f2), fmt.Sprint(f2), string(playerInfo)).Err()
 		if err != nil {
 			panic(err)
 		}
