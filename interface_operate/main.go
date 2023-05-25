@@ -18,7 +18,8 @@ func main() {
 	utils.Demo3()
 	utils.Demo4()
 	utils.Demo5()
-	fmt.Println("-----------------------------")
 	utils.Demo6()
+	fmt.Println("-----------------------------")
+	utils.AreaCircle()
 
 }
