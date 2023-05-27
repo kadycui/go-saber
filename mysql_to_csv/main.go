@@ -1,6 +1,6 @@
 package main
 
-import "gostart/demo/utils"
+import "gostart/mysql_to_csv/utils"
 
 func main() {
 	utils.RechargeToCsv()
