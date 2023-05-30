@@ -18,17 +18,6 @@ func MapToRedis() {
 	}
 
 	var ranks []Rank
-
-	type Player struct {
-		ServerId    int    `json:"server_id"`
-		PlayerId    int    `json:"player_id"`
-		PlayerName  string `json:"player_name"`
-		PlayerLevel int    `json:"player_level"`
-		Gang        string `json:"gang"`
-		Battle      int    `json:"battle"`
-		WorldLevel  int    `json:"world_Level"`
-	}
-
 	// 连接 MySQL 数据库
 	db, err := sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/test")
 	if err != nil {
@@ -127,12 +116,10 @@ func MapToRedis() {
 	var ps []map[string]interface{}
 	// 遍历获取到的结果
 	for _, member := range result {
-		fmt.Println(member)
 		val, err := rdb.HGetAll(fmt.Sprintf("lbr|%s", member)).Result()
 		if err != nil {
 			fmt.Println(err)
 		} else {
-			fmt.Println(val)
 			mapInterface := make(map[string]interface{})
 			for k, v := range val {
 				mapInterface[k] = v
