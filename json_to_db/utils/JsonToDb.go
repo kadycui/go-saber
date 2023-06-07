@@ -39,44 +39,44 @@ func JsonToDb() {
 		t1 := time.Now()
 		effBgId, err := strconv.Atoi(item.(map[string]interface{})["effBgId"].(string))
 		if err != nil {
-			fmt.Println("转换 str失败：", err)
+			log.Println("转换 int 失败：", err)
 			return
 		}
 		pName := item.(map[string]interface{})["pName"]
 		faceName := item.(map[string]interface{})["faceName"]
 		sid, err := strconv.Atoi(item.(map[string]interface{})["sid"].(string))
 		if err != nil {
-			fmt.Println("转换 str失败：", err)
+			log.Println("转换 int 失败：", err)
 			return
 		}
 		width, err := strconv.Atoi(item.(map[string]interface{})["width"].(string))
 		if err != nil {
-			fmt.Println("转换 str失败：", err)
+			log.Println("转换 int 失败：", err)
 			return
 		}
 		propId, err := strconv.Atoi(item.(map[string]interface{})["propId"].(string))
 		if err != nil {
-			fmt.Println("转换 str失败：", err)
+			log.Println("转换 int 失败：", err)
 			return
 		}
 		pid, err := strconv.Atoi(item.(map[string]interface{})["pid"].(string))
 		if err != nil {
-			fmt.Println("转换 str失败：", err)
+			log.Println("转换 int 失败：", err)
 			return
 		}
 		hight, err := strconv.Atoi(item.(map[string]interface{})["hight"].(string))
 		if err != nil {
-			fmt.Println("转换 str失败：", err)
+			log.Println("转换 int 失败：", err)
 			return
 		}
 		titleId, err := strconv.Atoi(item.(map[string]interface{})["titleId"].(string))
 		if err != nil {
-			fmt.Println("转换 str失败：", err)
+			log.Println("转换 int 失败：", err)
 			return
 		}
 		textName, err := strconv.Atoi(item.(map[string]interface{})["textName"].(string))
 		if err != nil {
-			fmt.Println("转换 str失败：", err)
+			log.Println("转换 int 失败：", err)
 			return
 		}
 		lastTime := item.(map[string]interface{})["lastTime"].(string)
