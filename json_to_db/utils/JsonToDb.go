@@ -6,13 +6,19 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"path/filepath"
+	"strconv"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
 func JsonToDb() {
-	file, err := ioutil.ReadFile("json_to_db\\utils\\data.json")
+
+	path := GetPath()
+	p1, _ := filepath.Abs(path)
+	p2 := filepath.Join(p1, "../conf/data.json")
+	file, err := ioutil.ReadFile(p2)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -31,20 +37,54 @@ func JsonToDb() {
 
 	for _, item := range data {
 		t1 := time.Now()
-		effBgId := int(item.(map[string]interface{})["effBgId"].(float64))
+		effBgId, err := strconv.Atoi(item.(map[string]interface{})["effBgId"].(string))
+		if err != nil {
+			fmt.Println("转换 str失败：", err)
+			return
+		}
 		pName := item.(map[string]interface{})["pName"]
 		faceName := item.(map[string]interface{})["faceName"]
-		sid := int(item.(map[string]interface{})["sid"].(float64))
-		with := int(item.(map[string]interface{})["with"].(float64))
-		propId := int(item.(map[string]interface{})["propId"].(float64))
-		pid := int(item.(map[string]interface{})["pid"].(float64))
-		hight := int(item.(map[string]interface{})["hight"].(float64))
-		titleId := int(item.(map[string]interface{})["titleId"].(float64))
-		textName := int(item.(map[string]interface{})["textName"].(float64))
-		lastTime := time.Now().Format("2006-01-02 15:04:05")
-		fmt.Printf("res: %d,%s,%s,%d,%d,%d,%d,%d,%d,%d\n", effBgId, pName, faceName, sid, with, propId, pid, hight, titleId, textName)
+		sid, err := strconv.Atoi(item.(map[string]interface{})["sid"].(string))
+		if err != nil {
+			fmt.Println("转换 str失败：", err)
+			return
+		}
+		width, err := strconv.Atoi(item.(map[string]interface{})["width"].(string))
+		if err != nil {
+			fmt.Println("转换 str失败：", err)
+			return
+		}
+		propId, err := strconv.Atoi(item.(map[string]interface{})["propId"].(string))
+		if err != nil {
+			fmt.Println("转换 str失败：", err)
+			return
+		}
+		pid, err := strconv.Atoi(item.(map[string]interface{})["pid"].(string))
+		if err != nil {
+			fmt.Println("转换 str失败：", err)
+			return
+		}
+		hight, err := strconv.Atoi(item.(map[string]interface{})["hight"].(string))
+		if err != nil {
+			fmt.Println("转换 str失败：", err)
+			return
+		}
+		titleId, err := strconv.Atoi(item.(map[string]interface{})["titleId"].(string))
+		if err != nil {
+			fmt.Println("转换 str失败：", err)
+			return
+		}
+		textName, err := strconv.Atoi(item.(map[string]interface{})["textName"].(string))
+		if err != nil {
+			fmt.Println("转换 str失败：", err)
+			return
+		}
+		lastTime := item.(map[string]interface{})["lastTime"].(string)
 
-		result, err := db.Exec("INSERT INTO dynamic (effBgId, pName, faceName, sid, width, propId, pid, hight, titleId, textName, lastTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", effBgId, pName, faceName, sid, with, propId, pid, hight, titleId, textName, lastTime)
+		// fmt.Printf("res: %T,%T,%T,%T,%T,%T,%T,%T,%T,%T\n", effBgId, pName, faceName, sid, width, propId, pid, hight, titleId, textName)
+		// fmt.Printf("res: %v,%v,%v,%v,%v,%v,%v,%v,%v,%v\n", effBgId, pName, faceName, sid, width, propId, pid, hight, titleId, textName)
+		// fmt.Printf("res: %d,%s,%s,%d,%d,%d,%d,%d,%d,%d\n", effBgId, pName, faceName, sid, width, propId, pid, hight, titleId, textName)
+		result, err := db.Exec("INSERT INTO dynamic (effBgId, pName, faceName, sid, width, propId, pid, hight, titleId, textName, lastTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", effBgId, pName, faceName, sid, width, propId, pid, hight, titleId, textName, lastTime)
 		if err != nil {
 			log.Fatal(err)
 		}
