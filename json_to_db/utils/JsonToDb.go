@@ -23,13 +23,14 @@ func JsonToDb() {
 		log.Fatal(err)
 	}
 
-	db, err := sql.Open("mysql", "root:123456@tcp(124.220.3.231:3309)/test")
+	db, err := sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/test")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer db.Close()
 
 	for _, item := range data {
+		t1 := time.Now()
 		effBgId := int(item.(map[string]interface{})["effBgId"].(float64))
 		pName := item.(map[string]interface{})["pName"]
 		faceName := item.(map[string]interface{})["faceName"]
@@ -49,6 +50,8 @@ func JsonToDb() {
 		}
 
 		fmt.Println(result.LastInsertId())
+		elapsed := time.Since(t1)
+		fmt.Println(elapsed)
 
 	}
 
