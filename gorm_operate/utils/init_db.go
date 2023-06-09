@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"gorm.io/gorm/schema"
 	"time"
 
 	"gorm.io/driver/mysql"
@@ -36,7 +37,12 @@ func init() {
 	// 声明err变量，下面不能使用:=赋值运算符，否则_db变量会当成局部变量，导致外部无法访问_db变量
 	var err error
 	//连接MYSQL, 获得DB类型实例，用于后面的数据库读写操作。
-	_db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	_db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
+		NamingStrategy: schema.NamingStrategy{
+			TablePrefix:   "",   // 表名前缀
+			SingularTable: true, // 禁用表明复数
+		},
+	})
 	if err != nil {
 		panic("连接数据库失败, error=" + err.Error())
 	}
@@ -48,7 +54,10 @@ func init() {
 	sqlDB.SetMaxIdleConns(20)  //连接池最大允许的空闲连接数，如果没有sql任务需要执行的连接数大于20，超过的连接会被连接池关闭。
 
 	// 数据迁移
-	Migrate(_db)
+	err = Migrate(_db)
+	if err != nil {
+		return
+	}
 
 }
 

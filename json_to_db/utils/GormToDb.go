@@ -9,7 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// 初始化数据库连接
+// InitDB 初始化数据库连接
 func InitDB() (*gorm.DB, error) {
 	dsn := "root:123456@tcp(124.220.3.231:3309)/test?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
@@ -19,19 +19,19 @@ func InitDB() (*gorm.DB, error) {
 	return db, nil
 }
 
-// 指定动态表名称为 dynamic
+// TableName 指定动态表名称为 dynamic
 func (Dynamic) TableName() string {
 	return "dynamic"
 }
 
-// 创建动态表
+// Migrate 创建动态表
 func Migrate(db *gorm.DB) error {
 	// err := db.Table("dynamic").AutoMigrate(&Dynamic{})
 	err := db.AutoMigrate(&Dynamic{}, &User{})
 	return err
 }
 
-// 定义动态表模型（表名为 dynamic）
+// Dynamic 定义动态表模型（表名为 dynamic）
 type Dynamic struct {
 	gorm.Model           // 增加created_at, updated_at, deleted_at字段
 	ID         int       `gorm:"primaryKey;autoIncrement;column:id"` // ID 对应表中的 id 字段
