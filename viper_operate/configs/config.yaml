@@ -1,0 +1,13 @@
+AppName: GinRank
+LogLevel: debug
+
+MySQL:
+  Host: localhost
+  Port: 3306
+  User: root
+  Pwd: password
+  DbName: mydatabase
+
+Redis:
+  IP: 127.0.0.1
+  Port: 6379
