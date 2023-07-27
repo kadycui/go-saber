@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gostart/viper_operate/configs"
+	"gostart/tools/viper_operate/configs"
 )
 
 func main() {

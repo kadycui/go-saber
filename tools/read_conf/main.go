@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostart/read_conf/utils"
+	"gostart/tools/read_conf/utils"
 )
 
 func main() {

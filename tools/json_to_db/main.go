@@ -1,6 +1,6 @@
 package main
 
-import "gostart/json_to_db/utils"
+import "gostart/tools/json_to_db/utils"
 
 func main() {
 	// utils.LoadPath()

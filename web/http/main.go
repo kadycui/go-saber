@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostart/web/utils"
+	"gostart/web/http/utils"
 	"net/http"
 )
 

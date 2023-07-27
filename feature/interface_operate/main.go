@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	. "gostart/interface_operate/service"
-	"gostart/interface_operate/utils"
+	. "gostart/feature/interface_operate/service"
+	"gostart/feature/interface_operate/utils"
 )
 
 func main() {

@@ -1,6 +1,6 @@
 package main
 
-import "gostart/mongo_operate/utils"
+import "gostart/tools/mongo_operate/utils"
 
 func main() {
 

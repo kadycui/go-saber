@@ -1,6 +1,6 @@
 package main
 
-import "gostart/redis_operate/utils"
+import "gostart/tools/redis_operate/utils"
 
 func main() {
 	// utils.RedisSet("age", "23", time.Hour)

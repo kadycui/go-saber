@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostart/gorm_operate/utils"
+	"gostart/tools/gorm_operate/utils"
 )
 
 func main() {

@@ -1,6 +1,6 @@
 package main
 
-import "gostart/json_type_conversion/utils"
+import "gostart/tools/json_type_conversion/utils"
 
 func main() {
 

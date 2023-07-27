@@ -1,6 +1,6 @@
 package main
 
-import "gostart/gocron_demo/utils"
+import "gostart/tools/gocron_demo/utils"
 
 func main() {
 	utils.GocronDemo()

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostart/log_operate/utils"
+	"gostart/tools/log_operate/utils"
 	"time"
 )
 

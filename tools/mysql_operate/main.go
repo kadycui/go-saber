@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostart/mysql_operate/utils"
+	"gostart/tools/mysql_operate/utils"
 )
 
 func main() {
