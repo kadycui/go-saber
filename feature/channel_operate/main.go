@@ -1,56 +1,32 @@
 package main
 
 import (
-	"fmt"
+	"gostart/feature/channel_operate/utils"
 )
 
-// func recv(c chan int) {
-// 	ret := <-c
-// 	fmt.Println("接收成功", ret)
-
-// }
-
-func cter(out chan<- int) {
-	for i := 0; i < 10; i++ {
-		out <- i
-	}
-	close(out)
-}
-
-// 单向发送 out 通道， 单向接收 in 通道
-func sqer(out chan<- int, in <-chan int) {
-	for i := range in {
-		out <- i * i
-	}
-	close(out)
-}
-
-// 单向接收 in 通道
-func prter(in <-chan int) {
-	for i := range in {
-		fmt.Println(i)
-	}
-}
 func main() {
 
-	// 无缓冲通道(阻塞通道, 同步通道)
-	// ch := make(chan int)
+	// utils.ChUse()
+	// utils.ChannelWg()
 
-	// 有缓冲通道, 创建一个容量为2的通道(非阻塞)
-	// ch := make(chan int, 1)
+	// utils.AssertChannel()
+	// utils.ChannelRange()
 
-	// go recv(ch) // 启用 goroutine从通道接收值
-	// ch <- 10
-	// time.Sleep(time.Second)
+	// utils.EmptyInterfaceChan()
 
-	// fmt.Println("发送成功")
+	// utils.ConcurrentSync()
 
-	out := make(chan int)
-	in := make(chan int)
+	// utils.CloseChannel()
 
-	go cter(out)
-	go sqer(out, in)
+	// utils.ReadWriteChan()
 
-	prter(in)
+
+	utils.FindPrimeNum()
 
 }
+
+/*
+关闭channel后，无法向channel 再发送数据(引发 panic 错误后导致接收立即返回零值)；
+关闭channel后，可以继续从channel接收数据；
+对于nil channel，无论收发都会被阻塞。
+*/
