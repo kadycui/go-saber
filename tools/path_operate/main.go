@@ -3,24 +3,25 @@ package main
 import (
 	"errors"
 	"fmt"
-	"gostart/tools/path_operate/utils"
 	"os"
 	"os/exec"
 	"path"
 	"path/filepath"
 	"runtime"
 	"strings"
+
+	"github.com/kadycui/go-saber/tools/path_operate/utils"
 )
 
 func main() {
 
-	files := "D:\\GoCode\\gostart\\path_operate\\utils\\test.txt"
+	files := "D:\\GoCode\\github.com/kadycui/go-saber\\path_operate\\utils\\test.txt"
 	paths, fileName := filepath.Split(files)
 	fmt.Println(paths, fileName)      //获取路径中的目录及文件名 E:\data\  test.txt
 	fmt.Println(filepath.Base(files)) //获取路径中的文件名test.txt
 	fmt.Println(path.Ext(files))      //获取路径中的文件的后缀 .txt
 
-	str, _ := os.Getwd() // D:\GoCode\gostart
+	str, _ := os.Getwd() // D:\GoCode\github.com/kadycui/go-saber
 	fmt.Println(str)
 	str2, _ := filepath.Abs(str)
 	fmt.Println(str2)
@@ -37,20 +38,20 @@ func main() {
 	fmt.Println(filePath)
 
 	// 遍历目录
-	fs, _ := utils.WalkDir(`D:\GoCode\gostart`)
+	fs, _ := utils.WalkDir(`D:\GoCode\github.com/kadycui/go-saber`)
 	for _, v := range fs {
 		fmt.Println(v)
 	}
 
 	// 层次显示目录
-	fs2, _ := utils.WalkDir2(`D:\GoCode\gostart`, 2)
+	fs2, _ := utils.WalkDir2(`D:\GoCode\github.com/kadycui/go-saber`, 2)
 	for _, v := range fs2 {
 		fmt.Println(v)
 	}
 
 }
 
-// CurrentFile 获取当前文件的详细路径   D:/GoCode/gostart/path_operate/main.go
+// CurrentFile 获取当前文件的详细路径   D:/GoCode/github.com/kadycui/go-saber/path_operate/main.go
 func CurrentFile() string {
 	_, file, _, ok := runtime.Caller(1)
 	if !ok {
@@ -59,7 +60,7 @@ func CurrentFile() string {
 	return file
 }
 
-//获取当前的执行路径 C:\Users\company\AppData\Local\Temp\GoLand\
+// 获取当前的执行路径 C:\Users\company\AppData\Local\Temp\GoLand\
 func getCurrentPath() string {
 	s, err := exec.LookPath(os.Args[0])
 	checkErr(err)

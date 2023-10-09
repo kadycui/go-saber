@@ -1,8 +1,9 @@
 package main
 
 import (
-	"gostart/tools/log_operate/utils"
 	"time"
+
+	"github.com/kadycui/go-saber/tools/log_operate/utils"
 )
 
 func main() {

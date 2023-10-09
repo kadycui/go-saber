@@ -9,8 +9,8 @@ import (
 func FlushData() {
 	// 创建 Redis 客户端
 	client := redis.NewClient(&redis.Options{
-		Addr:     "10.16.168.61:6379",
-		Password: "123456", // Redis 无密码设置
+		Addr:     "172.20.166.56:6379",
+		Password: "", // Redis 无密码设置
 		DB:       3,        // Redis 默认数据库
 	})
 

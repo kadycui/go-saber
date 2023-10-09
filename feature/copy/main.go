@@ -2,11 +2,9 @@ package main
 
 import (
 	"fmt"
-	"gostart/feature/copy/utils"
+
+	"github.com/kadycui/go-saber/feature/copy/utils"
 )
-
-
-
 
 /*
 Go语言中有丰富的数据类型，除了基本的整型、浮点型、布尔型、字符串外，
@@ -29,7 +27,6 @@ func main() {
 	utils.LightCopy()
 
 }
-
 
 /*
 归根结底，使用 := 进行拷贝时：

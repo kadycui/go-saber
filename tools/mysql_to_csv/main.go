@@ -1,6 +1,6 @@
 package main
 
-import "gostart/tools/mysql_to_csv/utils"
+import "github.com/kadycui/go-saber/tools/mysql_to_csv/utils"
 
 func main() {
 	utils.RechargeToCsv()

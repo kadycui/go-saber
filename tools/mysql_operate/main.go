@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostart/tools/mysql_operate/utils"
+	"github.com/kadycui/go-saber/tools/mysql_operate/utils"
 )
 
 func main() {

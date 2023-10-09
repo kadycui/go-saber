@@ -1,6 +1,6 @@
 package main
 
-import "gostart/base/chatper_15/utils"
+import "github.com/kadycui/go-saber/base/chatper_15/utils"
 
 /*
 1.E-mail

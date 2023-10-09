@@ -1,6 +1,10 @@
 package main
 
-import "gostart/tools/json_type_conversion/utils"
+import (
+	"fmt"
+
+	"github.com/kadycui/go-saber/tools/json_type_conversion/utils"
+)
 
 func main() {
 
@@ -10,5 +14,9 @@ func main() {
 	utils.SliceToJson()
 	utils.JsonToStruct()
 	utils.JsonToMap()
+
+	fmt.Println("-------------------------------------------")
+
+	utils.Simplejson()
 
 }

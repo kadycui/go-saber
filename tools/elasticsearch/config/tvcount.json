@@ -1,0 +1,52 @@
+{
+    "settings": {
+        "index": {
+            "number_of_shards": "3",
+            "number_of_replicas": "0",
+            "version": {}
+        }
+    },
+    "mappings": {
+        "properties": {
+            "authorId": {
+                "type": "long"
+            },
+            "content": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "mCommentC": {
+                "type": "long"
+            },
+            "mDatetime": {
+                "type": "date"
+            },
+            "mId": {
+                "type": "long"
+            },
+            "mReadC": {
+                "type": "long"
+            },
+            "mStat": {
+                "type": "long"
+            },
+            "mTitle": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                    }
+                }
+            },
+            "tagIds": {
+                "type": "long"
+            }
+        }
+    }
+}

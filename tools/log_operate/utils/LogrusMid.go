@@ -13,7 +13,7 @@ type MyLogger struct {
 
 func New() MyLogger {
 
-	path := "/home/debian/code/gocode/go-saber/log_operate/go.log"
+	path := "/home/debian/code/gocode/github.com/kadycui/go-saber/log_operate/go.log"
 
 	/* 日志轮转相关函数
 	`WithLinkName` 为最新的日志建立软连接

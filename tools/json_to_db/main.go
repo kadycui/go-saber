@@ -1,6 +1,6 @@
 package main
 
-import "gostart/tools/json_to_db/utils"
+import "github.com/kadycui/go-saber/tools/json_to_db/utils"
 
 func main() {
 	// utils.LoadPath()

@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"gostart/tools/viper_operate/configs"
+
+	"github.com/kadycui/go-saber/tools/viper_operate/configs"
 )
 
 func main() {

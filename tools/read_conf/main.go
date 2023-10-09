@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostart/tools/read_conf/utils"
+	"github.com/kadycui/go-saber/tools/read_conf/utils"
 )
 
 func main() {

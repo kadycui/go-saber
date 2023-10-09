@@ -3,9 +3,10 @@ package utils
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
 	"log"
 	"strings"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // 数据库配置
@@ -14,7 +15,7 @@ const (
 	password = "123456"
 	ip       = "127.0.0.1"
 	port     = "3306"
-	dbName   = "gostart"
+	dbName   = "github.com/kadycui/go-saber"
 )
 
 // Db数据库连接池
@@ -66,7 +67,7 @@ func CreateTable() {
 		}
 	}(DB)
 
-	createTable := "CREATE TABLE `gostart`.`user` (" +
+	createTable := "CREATE TABLE `github.com/kadycui/go-saber`.`user` (" +
 		"`id` INT(10) NOT NULL AUTO_INCREMENT," +
 		"`name` VARCHAR(64) NULL," +
 		"`sex` INT(20) NULL DEFAULT NULL," +

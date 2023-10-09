@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostart/tools/gorm_operate/utils"
+	"github.com/kadycui/go-saber/tools/gorm_operate/utils"
 )
 
 func main() {

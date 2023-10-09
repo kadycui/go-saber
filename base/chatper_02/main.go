@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"gostart/base/chatper_02/utils"
+
+	"github.com/kadycui/go-saber/base/chatper_02/utils"
 )
 
 func main() {

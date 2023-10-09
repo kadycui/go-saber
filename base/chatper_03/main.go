@@ -1,6 +1,6 @@
 package main
 
-import "gostart/base/chatper_03/utils"
+import "github.com/kadycui/go-saber/base/chatper_03/utils"
 
 func main() {
 	// utils.Demo1()

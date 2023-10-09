@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	. "gostart/feature/interface_operate/service"
-	"gostart/feature/interface_operate/utils"
+
+	. "github.com/kadycui/go-saber/feature/interface_operate/service"
+	"github.com/kadycui/go-saber/feature/interface_operate/utils"
 )
 
 func main() {

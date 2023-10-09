@@ -9,8 +9,8 @@ import (
 
 func ReadRedisConf() {
 	// 读取YAML配置文件
-	// viper.SetConfigFile("D:\\GoCode\\go-saber\\redis_operate\\utils\\config.yml")
-	viper.SetConfigFile("redis_operate\\utils\\config.yml")
+	// viper.SetConfigFile("D:\\GoCode\\github.com/kadycui/go-saber\\redis_operate\\utils\\config.yml")
+	viper.SetConfigFile("tools\\redis_operate\\conf\\config.yml")
 	if err := viper.ReadInConfig(); err != nil {
 		panic(fmt.Errorf("fatal error config file: %s", err))
 	}

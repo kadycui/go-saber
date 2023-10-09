@@ -1,6 +1,6 @@
 package main
 
-import "gostart/tools/redis_operate/utils"
+import "github.com/kadycui/go-saber/tools/redis_operate/utils"
 
 func main() {
 	// utils.RedisSet("age", "23", time.Hour)
@@ -8,7 +8,7 @@ func main() {
 
 	// utils.FlushData()
 	// utils.JsonToRedis()
-	// utils.ReadRedisConf()
-	utils.MapToRedis()
+	utils.ReadRedisConf()
+	// utils.MapToRedis()
 
 }

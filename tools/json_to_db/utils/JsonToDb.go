@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
+	"os"
 	"path/filepath"
 	"strconv"
 	"time"
@@ -18,7 +18,7 @@ func JsonToDb() {
 	path := GetPath()
 	p1, _ := filepath.Abs(path)
 	p2 := filepath.Join(p1, "../conf/data.json")
-	file, err := ioutil.ReadFile(p2)
+	file, err := os.ReadFile(p2)
 	if err != nil {
 		log.Fatal(err)
 	}

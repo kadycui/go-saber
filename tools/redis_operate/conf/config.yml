@@ -1,0 +1,4 @@
+redis:
+  host: "172.20.166.56"
+  port: "6379"
+  password: ""

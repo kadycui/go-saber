@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostart/feature/channel_operate/utils"
+	"github.com/kadycui/go-saber/feature/channel_operate/utils"
 )
 
 func main() {
@@ -19,7 +19,6 @@ func main() {
 	// utils.CloseChannel()
 
 	// utils.ReadWriteChan()
-
 
 	utils.FindPrimeNum()
 

@@ -2,3 +2,4 @@
 .idea
 .exe
 *.log
+web/http/utils/csv/server.csv

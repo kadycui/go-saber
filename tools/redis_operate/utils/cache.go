@@ -12,7 +12,7 @@ var RedisCache *redis.Client
 func InitRedis() {
 	// 初始化redis
 	RedisCache = redis.NewClient(&redis.Options{
-		Addr:     "127.0.0.1:6379",
+		Addr:     "172.20.166.56:6379",
 		Password: "",
 		DB:       4,
 	})
