@@ -3,10 +3,14 @@ package order
 import (
 	"context"
 	"fmt"
-	"github.com/olivere/elastic/v7"
-	_ "github.com/olivere/elastic/v7"
 	"log"
+	"path"
+	"path/filepath"
+	"runtime"
 	"strconv"
+
+	"github.com/olivere/elastic/v7"
+	"gopkg.in/ini.v1"
 )
 
 type Order struct {
@@ -20,12 +24,51 @@ type Order struct {
 	PayPlatform string `json:"pay_platform"`
 	Channel     string `json:"channel"`
 	CreateTime  string `json:"date"`
+	IP          string `json:"ip"`
+	Province    string `json:"province"`
+}
+
+func GetPath() string {
+	// 获取当前执行文件绝对路径（go run）
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		panic("failed to get current file path")
+	}
+	p := path.Dir(filename)
+	// 获取父级目录
+	parentPath := filepath.Join(p, "../")
+	return parentPath
+}
+
+type EsConf struct {
+	Name string
+	Host string
 }
 
 func MakeOrderData() {
+
+	p := GetPath()
+	// 加载INI文件
+	iniPath := p + "/config/conf.ini"
+	cfg, err := ini.Load(iniPath)
+	if err != nil {
+		panic(err)
+	}
+	// 获取指定section的值
+	section := cfg.Section("es0")
+	name := section.Key("name").String()
+	host := section.Key("host").String()
+
+	fmt.Println(name, host)
+
+	esconf := EsConf{
+		Name: name,
+		Host: host,
+	}
+
 	// 创建Elasticsearch客户端
 	client, err := elastic.NewClient(
-		elastic.SetURL("http://172.20.166.56:9200"),
+		elastic.SetURL(esconf.Host),
 		elastic.SetSniff(false),
 	)
 	if err != nil {
@@ -62,10 +105,11 @@ func MakeOrderData() {
 		fmt.Printf("索引%s已创建\n", indexName)
 	}
 
-	num := 200000
+	num := 10
 	// 循环写入订单信息
 	for i := 1; i <= num; i++ {
 		chargeId, amount := GetCharge()
+		code, _ := GetProvince()
 		order := Order{
 			OrderNo:     GetOrderNo(),
 			Amount:      amount,
@@ -77,6 +121,8 @@ func MakeOrderData() {
 			PayPlatform: GetPayPlatform(),
 			Channel:     GetChannel(),
 			CreateTime:  GetTime(),
+			IP:          GetIP(),
+			Province:    code,
 		}
 
 		indexResp, err := client.Index().
@@ -88,7 +134,7 @@ func MakeOrderData() {
 			log.Fatal(err)
 		}
 
-		fmt.Printf("Indexed book: %s\n", indexResp.Id)
+		fmt.Printf("Indexed Order Id: %s\n", indexResp.Id)
 
 	}
 }

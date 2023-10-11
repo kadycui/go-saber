@@ -1,19 +1,20 @@
 package main
 
 import (
-	"github.com/kadycui/go-saber/tools/elasticsearch/curd"
+	"github.com/kadycui/go-saber/tools/elasticsearch/order"
 )
 
 func main() {
-	//book.MakeBookData()
+	// 生成es图书数据
+	// book.MakeBookData()
 	//order.GetOrderNo()
 	//order.GetChannel()
 	//order.GetPayPlatform()
 	//order.GetTime()
 	//order.GetCharge()
 	//order.GetServerId()
-	//order.MakeOrderData()
-	client := curd.GetEsClient()
+	order.MakeOrderData()
+	//client := curd.GetEsClient()
 
 	// fmt.Println(client.Ping("http://172.20.166.56:9200").Do(context.Background()))
 
@@ -82,6 +83,6 @@ func main() {
 
 	//curd.RangeQuery(client)
 	// curd.BoolQuery(client)
-	curd.PrefixQuery2(client)
+	//curd.PrefixQuery2(client)
 
 }

@@ -2,9 +2,11 @@ package order
 
 import (
 	"fmt"
-	"github.com/google/uuid"
 	"math/rand"
+	"strconv"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 // GetOrderNo 随机生成订单号
@@ -127,4 +129,110 @@ func GetServerId() int {
 
 	fmt.Println(randomIndex)
 	return randomIndex
+}
+
+func GetProvince() (string, string) {
+
+	CodeProvince := map[string]string{
+		"CN-AH": "安徽省",
+		"CN-BJ": "北京市",
+		"CN-CQ": "重庆市",
+		"CN-FJ": "福建省",
+		"CN-GD": "广东省",
+		"CN-GS": "甘肃省",
+		"CN-GX": "广西壮族自治区",
+		"CN-GZ": "贵州省",
+		"CN-HI": "海南省",
+		"CN-HE": "河北省",
+		"CN-HL": "黑龙江省",
+		"CN-HA": "河南省",
+		"CN-HK": "香港特别行政区",
+		"CN-HB": "湖北省",
+		"CN-HN": "湖南省",
+		"CN-JS": "江苏省",
+		"CN-JX": "江西省",
+		"CN-JL": "吉林省",
+		"CN-LN": "辽宁省",
+		"CN-MO": "澳门特别行政区",
+		"CN-NM": "内蒙古自治区",
+		"CN-NX": "宁夏回族自治区",
+		"CN-QH": "青海省",
+		"CN-SN": "陕西省",
+		"CN-SC": "四川省",
+		"CN-SD": "山东省",
+		"CN-SH": "上海市",
+		"CN-SX": "山西省",
+		"CN-TJ": "天津市",
+		"CN-XJ": "新疆维吾尔自治区",
+		"CN-XZ": "西藏自治区",
+		"CN-YN": "云南省",
+		"CN-ZJ": "浙江省",
+		"CN-TW": "台湾省",
+	}
+	// var provinces = []string{
+	// 	"北京市",
+	// 	"天津市",
+	// 	"河北省",
+	// 	"山西省",
+	// 	"辽宁省",
+	// 	"吉林省",
+	// 	"黑龙江省",
+	// 	"上海市",
+	// 	"江苏省",
+	// 	"浙江省",
+	// 	"安徽省",
+	// 	"福建省",
+	// 	"江西省",
+	// 	"山东省",
+	// 	"河南省",
+	// 	"湖北省",
+	// 	"湖南省",
+	// 	"广东省",
+	// 	"广西壮族自治区",
+	// 	"海南省",
+	// 	"重庆市",
+	// 	"四川省",
+	// 	"贵州省",
+	// 	"云南省",
+	// 	"西藏自治区",
+	// 	"陕西省",
+	// 	"甘肃省",
+	// 	"青海省",
+	// 	"宁夏回族自治区",
+	// 	"新疆维吾尔自治区",
+	// 	"香港特别行政区",
+	// 	"澳门特别行政区",
+	// }
+
+	randomSource := rand.NewSource(time.Now().UnixNano())
+	randomGenerator := rand.New(randomSource)
+	randomIndex := randomGenerator.Intn(len(CodeProvince))
+	i := 0
+	var randomCode, randomProvince string
+	for code, province := range CodeProvince {
+		if i == randomIndex {
+			randomCode = code
+			randomProvince = province
+			break
+		}
+		i++
+	}
+
+	fmt.Println(randomCode, randomProvince)
+
+	return randomCode, randomProvince
+
+}
+
+func GetIP() string {
+	// 生成四个随机数分别代表 IP 的四个部分
+	part1 := rand.Intn(256)
+	part2 := rand.Intn(256)
+	part3 := rand.Intn(256)
+	part4 := rand.Intn(256)
+
+	// 将四个数拼接成 IP 地址的形式
+	ip := strconv.Itoa(part1) + "." + strconv.Itoa(part2) + "." + strconv.Itoa(part3) + "." + strconv.Itoa(part4)
+	fmt.Println(ip)
+	return ip
 }

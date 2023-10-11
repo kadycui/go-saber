@@ -27,7 +27,7 @@ type Book struct {
 func MakeBookData() {
 	// 创建Elasticsearch客户端
 	client, err := elastic.NewClient(
-		elastic.SetURL("http://172.20.166.56:9200"),
+		elastic.SetURL("http://10.16.168.61:9200/"),
 		elastic.SetSniff(false),
 	)
 	if err != nil {
@@ -76,7 +76,7 @@ func MakeBookData() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	num := 2000
+	num := 20000
 	// 循环遍历输出书籍信息
 	for i := 1; i <= num; i++ {
 		// fmt.Printf("书名：%s\n", onebook.Title)
